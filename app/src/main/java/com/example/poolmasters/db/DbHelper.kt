@@ -20,4 +20,27 @@ class DbHelper(val context: Context): SQLiteOpenHelper(context, DB_NAME, null, 1
         db?.execSQL("drop table players")
         onCreate(db)
     }
+
+    fun removePlayers() {
+        writableDatabase.execSQL("delete from players", emptyArray())
+    }
+
+    fun addPlayer(name: String) {
+        writableDatabase.execSQL("insert into players (name) values (:1)", arrayOf(name))
+    }
+
+    fun getPlayers(): ArrayList<String> {
+        with(readableDatabase.rawQuery("select name from players", emptyArray())) {
+            moveToFirst()
+
+            val result = arrayListOf<String>()
+            while (!isAfterLast) {
+                result.add(getString(0))
+
+                moveToNext()
+            }
+
+            return result
+        }
+    }
 }

@@ -11,17 +11,14 @@
         android:theme="@style/Theme.PoolMasters">
         <activity
             android:name=".PlayersList"
-            android:label="@string/title_activity_players_list"
-            android:theme="@style/Theme.PoolMasters.NoActionBar"></activity>
-        <activity android:name=".RankTable" />
+            android:parentActivityName=".MainActivity"
+            android:theme="@style/Theme.PoolMasters.NoActionBar"/>
+        <activity
+            android:name=".RankTable"
+            android:parentActivityName=".MainActivity"/>
         <activity
             android:name=".NewGameCreator"
-            android:label="@string/title_activity_new_game_creator">
-            <intent-filter>
-                <action android:name="android.intent.action.MAIN" />
-
-                <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>
+            android:parentActivityName=".MainActivity">
         </activity>
         <activity
             android:name=".MainActivity"
